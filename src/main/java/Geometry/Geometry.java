@@ -1,7 +1,12 @@
 package Geometry;
 
+import org.jdom2.Element;
+
 public abstract class Geometry {
-    public String getName() {
-        return this.getClass().getName(); // TODO à vérifier
+
+    public String getClassName() {
+        return getClass().getSimpleName();
     }
+
+    public abstract Element toKML();
 }

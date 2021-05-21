@@ -1,6 +1,6 @@
 package Geometry;
 
-public class Point extends Geometry {
+public class Point{
     private final double x;
     private final double y;
 
@@ -9,12 +9,8 @@ public class Point extends Geometry {
         this.y = y;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
+    public String toString(){
+        return x + "," + y + " ";
     }
 
 }
