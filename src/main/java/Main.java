@@ -1,7 +1,9 @@
-import org.json.simple.parser.JSONParser;
+import parserElement.feature.Feature;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Parser.geojsonToJavaObject("countries.json");
+        List<Feature> countries = Parser.geojsonToJavaObject("countries.geojson");
+        Parser.javaObjectToKML(countries);
     }
 }
