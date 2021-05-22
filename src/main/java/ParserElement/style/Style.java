@@ -16,6 +16,7 @@ public class Style implements KMLElement {
         this.fill = fill;
     }
 
+
     public String getId() {
         return "#" + id;
     }
@@ -23,14 +24,12 @@ public class Style implements KMLElement {
     @Override
     public Element toKML() {
         Element style = new Element(getClass().getSimpleName()).setAttribute("id", id);
-
         Element lineStyle = new Element("LineStyle")
                 .addContent(new Element("color").addContent(color))
                 .addContent(new Element("width").addContent(Integer.toString(width)));
 
         Element polyStyle = new Element("PolyStyle")
                 .addContent(new Element("fill").addContent(Integer.toString(fill)));
-
         style.addContent(lineStyle).addContent(polyStyle);
         return style;
     }

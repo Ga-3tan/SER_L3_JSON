@@ -4,40 +4,41 @@ import ParserElement.KMLElement;
 import org.json.simple.JSONObject;
 import org.jdom2.Element;
 
-public class Properties implements KMLElement {
-//    private final String ADMIN; // nom pays
-//    private final String ISO_A3; // diminutif
-    private final String[] properties;
-    private static final String[] propertiesNames = {"ADMIN", "ISO_A3"};
+import java.util.HashMap;
+import java.util.Map;
 
-    public Properties(String ADMIN, String ISO_A3) {
-        properties = new String[]{ADMIN, ISO_A3};
-//        this.ADMIN = ADMIN;
-//        this.ISO_A3 = ISO_A3;
+public class Properties implements KMLElement {
+    // Structure "name" => "value"
+    private final Map<String, String> properties;
+
+    public Properties(Map<String, String> properties) {
+        this.properties = properties;
     }
+
 
     public String getADMIN() {
-        return properties[0];
+        return properties.get("ADMIN");
     }
 
-//    public String getISO_A3() {
-//        return ISO_A3;
-//    }
-
     public static Properties parse(JSONObject propertiesJSON) {
-        String admin = (String) propertiesJSON.get("ADMIN");
-        String iso = (String) propertiesJSON.get("ISO_A3");
-        return new Properties(admin, iso);
+//        String admin = (String) propertiesJSON.get("ADMIN");
+//        String iso = (String) propertiesJSON.get("ISO_A3");
+
+        Map<String,String> map = new HashMap<String,String>();
+        map.put("ADMIN",propertiesJSON.get("ADMIN").toString());
+        map.put("ISO_A3",propertiesJSON.get("ISO_A3").toString());
+
+        return new Properties(map);
     }
 
     @Override
     public Element toKML() {
         Element extendedData = new Element("ExtendedData");
-        for (int i = 0; i < properties.length; ++i) {
+        for (Map.Entry<String, String> property : properties.entrySet()) {
             Element data = new Element("Data")
-                    .setAttribute("name", propertiesNames[i]);
+                    .setAttribute("name", property.getKey());
 
-            data.addContent(new Element("value").addContent(properties[i]));
+            data.addContent(new Element("value").addContent(property.getValue()));
             extendedData.addContent(data);
         }
         return extendedData;

@@ -30,17 +30,27 @@ public class Polygon extends Geometry {
 
     @Override
     public Element toKML() {
+        Element polygon = new Element(getClassName());
         StringBuilder builder = new StringBuilder();
+        int size = ringList.size();
+        for(int i = 0; i < size; ++i){
 
-//        for (Point point : pointList)
-//            builder.append(point.toString());
+            for (Point point : ringList.get(i)) {
+                builder.append(point.toString());
+            }
 
-        Element coordinates = new Element("coordinates")
-                .addContent(builder.toString());
+            String polygonType = i == 0 ? "outerBoundaryIs" :
+                                          "innerBoundaryIs";
 
-        return new Element(getClassName())
-                .addContent(new Element("outerBoundaryIs")
-                        .addContent(new Element("LinearRing")
-                                .addContent(coordinates)));
+            Element coordinates = new Element("coordinates")
+                    .addContent(builder.toString());
+
+            polygon.addContent(new Element(polygonType)
+                                   .addContent(new Element("LinearRing")
+                                                    .addContent(coordinates)));
+            builder.setLength(0);
+        }
+        return polygon;
+
     }
 }

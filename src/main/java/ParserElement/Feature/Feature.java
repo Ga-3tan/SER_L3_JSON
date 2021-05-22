@@ -28,6 +28,8 @@ public class Feature implements KMLElement {
         return geometry;
     }
 
+    public String getStyleId() { return styleId; }
+
     public static Feature parse(JSONObject pays) {
         JSONObject propertiesJSON = (JSONObject) pays.get("properties");
         Properties properties = Properties.parse(propertiesJSON);
@@ -48,7 +50,7 @@ public class Feature implements KMLElement {
                 throw new IllegalStateException("Unexpected value: " + geometryJSON.get("type"));
         }
 
-        return new Feature(properties, geometry, null);
+        return new Feature(properties, geometry, "#style");//TODO Comment passer le style??
     }
 
     @Override
@@ -60,4 +62,6 @@ public class Feature implements KMLElement {
         placemark.addContent(geometry.toKML());
         return placemark;
     }
+
+
 }

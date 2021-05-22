@@ -3,7 +3,7 @@ package ParserElement.Geometry;
 import org.jdom2.Element;
 import org.json.simple.JSONArray;
 
-public class Point extends Geometry {
+public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
     private final double x;
     private final double y;
 
@@ -20,7 +20,7 @@ public class Point extends Geometry {
 
     public double getX() {
         return x;
-    }
+    }//TODO Garder les Getters que on utilsie pas?? (Aussi pour le autres classes)
 
     public double getY() {
         return y;
