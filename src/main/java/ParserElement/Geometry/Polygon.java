@@ -1,9 +1,9 @@
-package Geometry;
+package ParserElement.Geometry;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
+import org.jdom2.Element;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,5 +26,21 @@ public class Polygon extends Geometry {
 
     public void addRing(List<Point> ring) {
         ringList.add(ring);
+    }
+
+    @Override
+    public Element toKML() {
+        StringBuilder builder = new StringBuilder();
+
+//        for (Point point : pointList)
+//            builder.append(point.toString());
+
+        Element coordinates = new Element("coordinates")
+                .addContent(builder.toString());
+
+        return new Element(getClassName())
+                .addContent(new Element("outerBoundaryIs")
+                        .addContent(new Element("LinearRing")
+                                .addContent(coordinates)));
     }
 }

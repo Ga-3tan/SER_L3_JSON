@@ -1,7 +1,7 @@
-package Geometry;
+package ParserElement.Geometry;
 
+import org.jdom2.Element;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class Point extends Geometry {
     private final double x;
@@ -15,7 +15,7 @@ public class Point extends Geometry {
     public static Geometry parse(JSONArray geometryJSON) {
         Double x = (Double) geometryJSON.get(0);
         Double y = (Double) geometryJSON.get(1);
-        return new Point(x,y);
+        return new Point(x, y);
     }
 
     public double getX() {
@@ -26,4 +26,12 @@ public class Point extends Geometry {
         return y;
     }
 
+    public String toString() {
+        return x + "," + y + " ";
+    }
+
+    @Override
+    public Element toKML() {
+        return null;
+    }
 }
