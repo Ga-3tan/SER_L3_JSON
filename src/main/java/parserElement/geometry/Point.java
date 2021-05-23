@@ -18,14 +18,6 @@ public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
         return new Point(x, y);
     }
 
-    public double getX() {
-        return x;
-    }//TODO Garder les Getters que on utilsie pas?? (Aussi pour le autres classes)
-
-    public double getY() {
-        return y;
-    }
-
     @Override
     public String toString() {
         return x + "," + y + " ";
@@ -33,7 +25,9 @@ public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
 
     @Override
     public Element toKML() {
-        return null;
+        Element coordinates = new Element("coordinates")
+                .addContent(toString());
+        return new Element(getClassName()).addContent(coordinates);
     }
 
 }

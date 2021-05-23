@@ -59,6 +59,6 @@ public class Polygon extends Geometry {
         int out = 0;
         for (List<Point> ring : ringList)
             for (Point p : ring) out++;
-        return "\t- " + Integer.toString(out) + " coordinates";
+        return "\t- " + out + " coordinates";
     }
 }
