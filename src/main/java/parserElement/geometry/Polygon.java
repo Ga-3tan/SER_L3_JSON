@@ -53,4 +53,12 @@ public class Polygon extends Geometry {
         return polygon;
 
     }
+
+    @Override
+    public String toString() {
+        int out = 0;
+        for (List<Point> ring : ringList)
+            for (Point p : ring) out++;
+        return "\t- " + Integer.toString(out) + " coordinates";
+    }
 }

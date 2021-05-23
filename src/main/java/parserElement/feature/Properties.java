@@ -40,4 +40,9 @@ public class Properties implements KMLElement {
         }
         return extendedData;
     }
+
+    @Override
+    public String toString() {
+        return "(" + properties.get("ISO_A3") + ") " + properties.get("ADMIN");
+    }
 }
