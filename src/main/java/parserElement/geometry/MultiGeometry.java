@@ -28,4 +28,13 @@ public class MultiGeometry extends Geometry {
         return multiGeometry;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        for (int i = 0; i < polygonList.size(); i++) {
+            out.append(polygonList.get(i));
+            if (i != polygonList.size()-1) out.append("\n");
+        }
+        return out.toString();
+    }
 }

@@ -60,5 +60,8 @@ public class Feature implements KMLElement {
         return placemark;
     }
 
-
+    @Override
+    public String toString() {
+        return properties + "\n" + geometry;
+    }
 }

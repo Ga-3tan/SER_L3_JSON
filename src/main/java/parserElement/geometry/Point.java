@@ -26,6 +26,7 @@ public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
         return y;
     }
 
+    @Override
     public String toString() {
         return x + "," + y + " ";
     }
@@ -34,4 +35,5 @@ public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
     public Element toKML() {
         return null;
     }
+
 }
