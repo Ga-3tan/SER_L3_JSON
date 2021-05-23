@@ -11,23 +11,13 @@ public class Feature implements KMLElement {
     private final Geometry geometry;
     private final String styleId;
 
-    public Feature(Properties properties, Geometry geometry, String styleId) {
+    private Feature(Properties properties, Geometry geometry, String styleId) {
         this.properties = properties;
         this.geometry = geometry;
         this.styleId = styleId;
     }
 
-    public Properties getProperties() {
-        return properties;
-    }
-
-    public Geometry getGeometry() {
-        return geometry;
-    }
-
-    public String getStyleId() { return styleId; }
-
-    public static Feature parse(JSONObject pays) {
+    public static Feature parse(JSONObject pays, String styleId) {
         JSONObject propertiesJSON = (JSONObject) pays.get("properties");
         Properties properties = Properties.parse(propertiesJSON);
         JSONObject geometryJSON = (JSONObject) pays.get("geometry");
@@ -47,7 +37,7 @@ public class Feature implements KMLElement {
                 throw new IllegalStateException("Unexpected value: " + geometryJSON.get("type"));
         }
 
-        return new Feature(properties, geometry, "#style");//TODO Comment passer le style??
+        return new Feature(properties, geometry, styleId);
     }
 
     @Override

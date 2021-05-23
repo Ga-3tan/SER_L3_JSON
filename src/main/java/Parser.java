@@ -14,7 +14,7 @@ import org.jdom2.output.XMLOutputter;
 
 public class Parser {
     private static final String OUT_PATH = "output\\";
-    private static final Style styleMap = new Style("style", "FF90EE90", 2,0);
+    private static final Style STYLE = new Style("style", "FF90EE90", 2,0);
 
     public static List<Feature> geojsonToJavaObject(String filename) {
         JSONParser jsonParser = new JSONParser();
@@ -26,7 +26,7 @@ public class Parser {
 
             // parcours du tableau de pays
             for (Object country : countriesList) {
-                featureList.add(Feature.parse((JSONObject) country));
+                featureList.add(Feature.parse((JSONObject) country, STYLE.getId()));
             }
         } catch (IOException | ParseException e) {
             System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class Parser {
         Document document = new Document();
         document.setRootElement(new Element("Document"));
 
-        document.getRootElement().addContent(styleMap.toKML());
+        document.getRootElement().addContent(STYLE.toKML());
 
         for (Feature feature : featuresCollection) {
             document.getRootElement().addContent(feature.toKML());

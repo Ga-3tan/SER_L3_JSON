@@ -8,6 +8,8 @@ import java.util.List;
 public class Polygon extends Geometry {
     private final List<List<Point>> ringList = new LinkedList<>();
 
+    private Polygon() { }
+
     public static Geometry parse(JSONArray geometryJSON) {
         Polygon polygon = new Polygon();
         for (Object ring : geometryJSON)

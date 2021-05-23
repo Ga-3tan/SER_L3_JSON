@@ -10,7 +10,7 @@ public class Properties implements KMLElement {
     // Structure "name" => "value"
     private final Map<String, String> properties;
 
-    public Properties(Map<String, String> properties) {
+    private Properties(Map<String, String> properties) {
         this.properties = properties;
     }
 
@@ -20,12 +20,10 @@ public class Properties implements KMLElement {
     }
 
     public static Properties parse(JSONObject propertiesJSON) {
-//        String admin = (String) propertiesJSON.get("ADMIN");
-//        String iso = (String) propertiesJSON.get("ISO_A3");
 
         Map<String,String> map = new HashMap<>();
-        map.put("ADMIN",propertiesJSON.get("ADMIN").toString());
-        map.put("ISO_A3",propertiesJSON.get("ISO_A3").toString());
+        map.put("ADMIN", propertiesJSON.get("ADMIN").toString());
+        map.put("ISO_A3", propertiesJSON.get("ISO_A3").toString());
 
         return new Properties(map);
     }

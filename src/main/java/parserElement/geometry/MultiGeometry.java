@@ -8,6 +8,8 @@ import java.util.List;
 public class MultiGeometry extends Geometry {
     private final List<Polygon> polygonList = new LinkedList<>();
 
+    private MultiGeometry() {}
+
     public void add(Polygon polygon) {
         polygonList.add(polygon);
     }
