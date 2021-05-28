@@ -12,7 +12,7 @@ import org.json.simple.JSONArray;
 /**
  * Classe Point, une coordonée (x,y)
  */
-public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
+public class Point extends Geometry {
     private final double x;
     private final double y;
 
@@ -49,8 +49,8 @@ public class Point extends Geometry { //TODO Faire Heruter Point de Geometry??
     }
 
     /**
-     * toString
-     * @return String
+     * Méthode toString
+     * @return Un point sous la forme d'une String
      */
     @Override
     public String toString() {

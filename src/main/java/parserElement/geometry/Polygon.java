@@ -13,9 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Classe Polygon, une frontière constitué de liste de frontière (frontière interne inclue)
+ * Classe Polygon, cette classe contient les frontières d'un pays (frontière interne inclue)
  */
 public class Polygon extends Geometry {
+    /* Les frontieres sous forme d'une liste de liste de points */
     private final List<List<Point>> boundariesList = new LinkedList<>();
 
     /**
@@ -86,8 +87,8 @@ public class Polygon extends Geometry {
     }
 
     /**
-     * toString
-     * @return String
+     * Méthode toString
+     * @return Un polygon sous la forme d'une String
      */
     @Override
     public String toString() {

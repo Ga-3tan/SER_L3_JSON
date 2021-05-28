@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Classe Properties
+ * Classe représentant les propriétés d'un pays
  */
 public class Properties implements KMLElement {
     // Structure ("name","value")
@@ -28,7 +28,7 @@ public class Properties implements KMLElement {
     }
 
     /**
-     * getter de la propriété ADMIN
+     * Getter de la propriété ADMIN
      * @return String de la propriété ADMIN
      */
     public String getADMIN() {
@@ -65,8 +65,8 @@ public class Properties implements KMLElement {
     }
 
     /**
-     * toString
-     * @return String
+     * Méthode toString
+     * @return Les propriétés sous la forme d'une String
      */
     @Override
     public String toString() {

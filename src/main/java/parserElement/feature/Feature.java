@@ -13,7 +13,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
- *  Class représentant une Feature (Pays)
+ *  Classe représentant une Feature (Pays)
  */
 public class Feature implements KMLElement {
     private final Properties properties;
@@ -76,8 +76,8 @@ public class Feature implements KMLElement {
     }
 
     /**
-     * toString
-     * @return String
+     * Méthode toString
+     * @return Le pays sous la forme d'une String
      */
     @Override
     public String toString() {

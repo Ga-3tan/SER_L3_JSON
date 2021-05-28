@@ -14,7 +14,7 @@ import parserElement.KMLElement;
  */
 public abstract class Geometry implements KMLElement {
     /**
-     * donne le nom de la classe
+     * Donne le nom de la classe
      * @return String du nom de la classe
      */
     public String getClassName() {

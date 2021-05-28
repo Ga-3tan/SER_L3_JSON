@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Classe MutliGeometry (MultiPolygon), une Geometry qui contient une liste de Polygon
+ * Classe MultiGeometry (MultiPolygon), une Geometry qui contient une liste de Polygon
  */
 public class MultiGeometry extends Geometry {
     private final List<Polygon> polygonList = new LinkedList<>();
@@ -23,7 +23,7 @@ public class MultiGeometry extends Geometry {
     private MultiGeometry() { }
 
     /**
-     * ajoute un Polygon à la liste de polygon de MutliGeometry
+     * Ajoute un Polygon à la liste de polygon de MutliGeometry
      * @param polygon polygon à rajouter
      */
     public void add(Polygon polygon) {
@@ -57,8 +57,8 @@ public class MultiGeometry extends Geometry {
     }
 
     /**
-     * toString
-     * @return String
+     * Méthode toString
+     * @return Les polygons sous la forme d'une String
      */
     @Override
     public String toString() {

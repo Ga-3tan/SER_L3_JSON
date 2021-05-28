@@ -19,7 +19,9 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 /**
- *
+ * Classe Parser, cette classe permet les conversions:
+ * geojson => Liste de pays (Objects java)
+ * Liste de pays => kml
  */
 public class Parser {
     private static final String OUT_PATH = "output\\";

@@ -10,7 +10,7 @@ import parserElement.KMLElement;
 import org.jdom2.Element;
 
 /**
- * Style KML pour Google Earth Pro
+ * Classe représentant le Style des frontières d'un pays
  */
 public class Style implements KMLElement {
     private final String id;
@@ -33,7 +33,7 @@ public class Style implements KMLElement {
     }
 
     /**
-     * donne l'id du Style
+     * Donne l'id du Style
      * @return #id
      */
     public String getId() {

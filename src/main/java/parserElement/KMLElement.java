@@ -9,7 +9,7 @@ package parserElement;
 import org.jdom2.Element;
 
 /**
- * Element KML
+ * Interface représentant un Element convertible en KML
  */
 public interface KMLElement {
     /**
