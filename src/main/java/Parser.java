@@ -1,3 +1,9 @@
+/**
+ * File     : Parser.java
+ * Authors  : Gaétan Zwick, Alessandro Parrino
+ * Date     : 18.05.2021
+ */
+
 import parserElement.feature.Feature;
 import parserElement.style.Style;
 import java.io.*;
@@ -12,21 +18,29 @@ import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+/**
+ *
+ */
 public class Parser {
     private static final String OUT_PATH = "output\\";
     private static final Style STYLE = new Style("style", "FF90EE90", 2,0);
 
+    /**
+     * Parse un fichier geojson (JSON) en List de Feature
+     * @param filename chemin vers le fichier geojson
+     * @return liste de Feature (pays)
+     */
     public static List<Feature> geojsonToJavaObject(String filename) {
         JSONParser jsonParser = new JSONParser();
         List<Feature> featureList = new LinkedList<>();
         try (FileReader reader = new FileReader(filename)) {
             // lecture du fichier
             Object obj = jsonParser.parse(reader);
-            JSONArray countriesList = (JSONArray) ((JSONObject) obj).get("features");
+            JSONArray featuresList = (JSONArray) ((JSONObject) obj).get("features");
 
-            // parcours du tableau de pays
-            for (Object country : countriesList) {
-                featureList.add(Feature.parse((JSONObject) country, STYLE.getId()));
+            // parcours du tableau de feature (pays)
+            for (Object feature : featuresList) {
+                featureList.add(Feature.parse((JSONObject) feature, STYLE.getId()));
             }
         } catch (IOException | ParseException e) {
             System.out.println(e.getMessage());
@@ -34,10 +48,13 @@ public class Parser {
         return featureList;
     }
 
+    /**
+     * Converti des objets JAVA en fichier KML pour Google Earth Pro
+     * @param featuresCollection une liste de Feature (pays)
+     */
     public static void javaObjectToKML(List<Feature> featuresCollection){
         Document document = new Document();
         document.setRootElement(new Element("Document"));
-
         document.getRootElement().addContent(STYLE.toKML());
 
         for (Feature feature : featuresCollection) {
@@ -53,8 +70,7 @@ public class Parser {
 
         try {
             xmlOutputter.output(document, new FileWriter(OUT_PATH + "countries.kml"));
-        }
-        catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
 

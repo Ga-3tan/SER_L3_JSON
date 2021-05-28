@@ -1,3 +1,9 @@
+/**
+ * File     : Main.java
+ * Authors  : Gaétan Zwick, Alessandro Parrino
+ * Date     : 18.05.2021
+ */
+
 import parserElement.feature.Feature;
 import java.util.List;
 

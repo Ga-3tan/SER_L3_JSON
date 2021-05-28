@@ -1,3 +1,9 @@
+/**
+ * File     : MultiGeometry.java
+ * Authors  : Gaétan Zwick, Alessandro Parrino
+ * Date     : 18.05.2021
+ */
+
 package parserElement.geometry;
 
 import org.jdom2.Element;
@@ -5,15 +11,30 @@ import org.json.simple.JSONArray;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe MutliGeometry (MultiPolygon), une Geometry qui contient une liste de Polygon
+ */
 public class MultiGeometry extends Geometry {
     private final List<Polygon> polygonList = new LinkedList<>();
 
-    private MultiGeometry() {}
+    /**
+     * Constructeur privé de MutliGeometry
+     */
+    private MultiGeometry() { }
 
+    /**
+     * ajoute un Polygon à la liste de polygon de MutliGeometry
+     * @param polygon polygon à rajouter
+     */
     public void add(Polygon polygon) {
         polygonList.add(polygon);
     }
 
+    /**
+     * Parse un MutliGeometry JSON en objet MutliGeometry
+     * @param geometryJSON JSONObject de la MutliGeometry
+     * @return une MutliGeometry
+     */
     public static Geometry parse(JSONArray geometryJSON) {
         MultiGeometry multiGeometry = new MultiGeometry();
         for (Object polygon : geometryJSON) {
@@ -22,14 +43,23 @@ public class MultiGeometry extends Geometry {
         return multiGeometry;
     }
 
+    /**
+     * Transforme l'instance en Element KML
+     * @return MultiGeometry en Element KML
+     */
     @Override
     public Element toKML() {
         Element multiGeometry = new Element(getClassName());
+
         polygonList.forEach(polygon -> multiGeometry.addContent(polygon.toKML()));
 
         return multiGeometry;
     }
 
+    /**
+     * toString
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();

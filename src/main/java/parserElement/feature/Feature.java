@@ -1,3 +1,9 @@
+/**
+ * File     : Feature.java
+ * Authors  : Gaétan Zwick, Alessandro Parrino
+ * Date     : 18.05.2021
+ */
+
 package parserElement.feature;
 
 import parserElement.geometry.*;
@@ -6,17 +12,32 @@ import org.jdom2.Element;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ *  Class représentant une Feature (Pays)
+ */
 public class Feature implements KMLElement {
     private final Properties properties;
     private final Geometry geometry;
     private final String styleId;
 
+    /**
+     * Constructeur de Feature
+     * @param properties les propriétés (meta data du pays)
+     * @param geometry les frontières
+     * @param styleId le style de représentation KML
+     */
     private Feature(Properties properties, Geometry geometry, String styleId) {
         this.properties = properties;
         this.geometry = geometry;
         this.styleId = styleId;
     }
 
+    /**
+     * Parse un Feature JSON en objet Feature
+     * @param pays JSONObject de la feature
+     * @param styleId style du Feature pour le KML
+     * @return une Feature
+     */
     public static Feature parse(JSONObject pays, String styleId) {
         JSONObject propertiesJSON = (JSONObject) pays.get("properties");
         Properties properties = Properties.parse(propertiesJSON);
@@ -40,6 +61,10 @@ public class Feature implements KMLElement {
         return new Feature(properties, geometry, styleId);
     }
 
+    /**
+     * Transforme l'instance en Element KML
+     * @return Feature en Element KML
+     */
     @Override
     public Element toKML() {
         Element placemark = new Element("Placemark");
@@ -50,6 +75,10 @@ public class Feature implements KMLElement {
         return placemark;
     }
 
+    /**
+     * toString
+     * @return String
+     */
     @Override
     public String toString() {
         return properties + "\n" + geometry;
